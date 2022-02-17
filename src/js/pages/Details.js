@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { Fragment, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import parse from 'html-react-parser'
 import { GET_NEWS_URI } from '../config/api'
 
 const getNews = (slug, callback) => {
@@ -16,18 +15,6 @@ const getNews = (slug, callback) => {
     })
 }
 
-const options = {
-    replace: (domNode) => {
-        if (domNode.attribs && domNode.attribs.class === "remove") {
-            return <></>;
-        }
-    }
-}
-
-const ContentElement = ({content}) => {
-    return parse(content, options)
-}
-
 const Details = ({...props}) => {
     const {slug} = useParams()
     const [news, setNews] = useState(null)
@@ -37,14 +24,9 @@ const Details = ({...props}) => {
 
     useEffect(() => {
         if(news) {
-            // var e = document.createElement('div')
-            // e.innerHTML = news.content
-            // document.getElementById('content').innerHTML = e.innerHTML
-            // let html = () => (new DOMParser().parseFromString(news.content, "text/html").body.childNodes)
-            // console.log(html)
-            // document.getElementById('content').appendChild(news.content)
-            // let frag = document.createRange().createContextualFragment(news.content)
-            // console.log(frag)
+            let elem = document.createElement('div')
+            elem.innerHTML = news.content
+            document.getElementById('content').innerHTML = elem.innerText
         }
     }, [news])
 
@@ -53,9 +35,10 @@ const Details = ({...props}) => {
             <section className='page__news'>
                 {news && (
                     <Fragment>
-                        <h3>{news.title}</h3>
-                        <p>{(new Date(news.published_at)).toLocaleDateString('en-US', {day: 'string', year: 'numeric', month: 'long', day: 'numeric'})}<span></span></p>
+                        <h3 className='page__news--title'>{news.title}</h3>
+                        <p className='page__news--time'>{(new Date(news.published_at)).toLocaleDateString('en-US', {day: 'string', year: 'numeric', month: 'long', day: 'numeric'})}<span></span></p>
                         <div id='content'></div>
+                        <p className='page__news--author'>{news.authors}</p>
                     </Fragment>
                 )}
             </section>

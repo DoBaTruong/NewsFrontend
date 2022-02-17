@@ -4,6 +4,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 import { getStyles } from "../helpers/helpers"
 import { useWindowDemensions } from "../helpers/hooks"
 import { BASE_PATH } from "../config/api"
+import { Link } from "react-router-dom"
 
 const HomeSlider = ({banners}) => {
     const {width} = useWindowDemensions()
@@ -29,7 +30,7 @@ const HomeSlider = ({banners}) => {
                                 <img className='item__photo--thumb' src={BASE_PATH + banner.photo} alt='' />
                             </div>
                             <div className='item__info'>
-                                <a className='item__info--title'>{banner.title}</a>
+                                <Link to={`/news/${banner.slug}`} className='item__info--title'>{banner.title}</Link>
                                 <div className='item__info--abstract'>{banner.abstract}</div>
                             </div>
                         </div>
