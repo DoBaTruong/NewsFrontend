@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import SunEditor from 'suneditor-react/dist/SunEditor'
 import SelectCategory from '../components/SelectCategory'
-import { BASE_PATH, CHECK_TITLE_EXIST_URI, GET_ALL_CATEGORY_URI, GET_UPDATE_NEWS_URI, UPDATE_NEWS_URI } from '../config/api'
+import { ADMIN_GET_NEWS_URI, BASE_PATH, CHECK_TITLE_EXIST_URI, GET_ALL_CATEGORY_URI, GET_UPDATE_NEWS_URI, UPDATE_NEWS_URI } from '../config/api'
 import TokenAxios from '../config/TokenAxios'
 import { decodeHtml, getCategories, getChildren, getCookie, previewImage } from '../helpers/helpers'
 import photo from '../../images/bg/avatar-default.png'
@@ -49,7 +49,7 @@ const getAllCategories = (recursiveCallback) => {
 const getCategory = (callback, slug) => {
     TokenAxios({
         method: 'get',
-        url: GET_UPDATE_NEWS_URI + `/${slug}`,
+        url: ADMIN_GET_NEWS_URI + `/${slug}`,
         headers: {
             'X-Access-Token': getCookie('token'),
             'X-Refresh-Token': getCookie('_rftok'),
@@ -57,7 +57,7 @@ const getCategory = (callback, slug) => {
     })
     .then(res => {
         if(res.data.code === 200 || !res.data.code) {
-            callback(res.data.category)
+            callback(res.data.news)
         }
     })
 }

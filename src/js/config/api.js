@@ -40,6 +40,8 @@ const CREATE_NEWS_URI = 'http://localhost:8000/news/create'
 
 const GET_NEWS_URI = 'http://localhost:8000/news/'
 
+const ADMIN_GET_NEWS_URI = 'http://localhost:8000/admin/news/'
+
 const GET_UPDATE_NEWS_URI = 'http://localhost:8000/news/'
 
 const UPDATE_NEWS_URI = 'http://localhost:8000/news/update'
@@ -89,5 +91,5 @@ export {
     GET_ARTICLE_NEW_URI,
     GET_ARTICLE_COMMENT_URI,
     GET_NEWS_BY_CATEGORY_SEARCH_URI,
-    
+    ADMIN_GET_NEWS_URI,
 }

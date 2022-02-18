@@ -10,7 +10,7 @@ const getNews = (slug, callback) => {
     })
     .then(res => {
         if(res.data.code === 200 || !res.data.code) {
-            callback(res.data.category)
+            callback(res.data.news)
         }
     })
 }

@@ -1,7 +1,7 @@
 import { InputLabel, MenuItem, Select } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { DELETE_NEWS_URI, GET_NEWS_URI } from '../config/api'
@@ -33,7 +33,7 @@ function getNewsByPage(newsCallback, setTotalCallback, page, limit) {
     })
 }
 
-const News = ({isAdmin, ...props}) => {
+const News = ({isAdmin}) => {
     const [news, setNews] = useState([])
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
