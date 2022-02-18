@@ -92,7 +92,7 @@ const Home = (props) => {
                                 <i className='icofont-fire-alt'></i>
                                 Tin mới
                             </h3>
-                            <span className='news__head--all'>Xem tất cả</span>
+                            <Link to={`/search/news-hot/''`} className='news__head--all' >Xem tất cả</Link>
                         </div>
                         <section className='news__grid'>
                             {updatedNew && updatedNew.map(t => (
@@ -115,7 +115,7 @@ const Home = (props) => {
                                 <i className='icofont-space'></i>
                                 Bình luận nhiều
                             </h3>
-                            <span className='news__head--all'>Xem tất cả</span>
+                            <Link to={`/search/news-comment/''`} className='news__head--all'>Xem tất cả</Link>
                         </div>
                         <section className='news__grid'>
                             {newsComment && newsComment.map(n => (
@@ -140,7 +140,7 @@ const Home = (props) => {
                                 <i className='icofont-learn'></i>
                                 Đọc nhiều
                             </h3>
-                            <span className='news__head--all'>Xem tất cả</span>
+                            <Link to={`/search/news-read/''`} className='news__head--all'>Xem tất cả</Link>
                         </div>
                         <section className='news__list'>
                             {reaALot && reaALot.map(item => (

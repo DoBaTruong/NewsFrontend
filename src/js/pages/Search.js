@@ -8,6 +8,7 @@ const getNewsBy = (page, limit, category, keyword, type, callBackOne, callbackTw
         method: 'get',
         url: GET_NEWS_BY_CATEGORY_SEARCH_URI + `/${category}/${keyword}/${page}/${limit}`
     }).then(res => {
+        console.log(res.data)
         if(!res.data.code || res.data.code === 200) {
             callBackOne(res.data.total)
             callbackTwo(res.data.news)
