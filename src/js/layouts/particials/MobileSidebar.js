@@ -1,8 +1,10 @@
 import { Fragment } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import avatar from '../../../images/bg/avatar-default.png'
+import { BASE_PATH } from '../../config/api'
 
-const MobileSidebar = ({handleUserHeaderMenuClose, handleMobileSidebarClose, infoUser, handleLogout, ...props}) => {
+const MobileSidebar = ({handleUserHeaderMenuClose, categories, handleMobileSidebarClose, infoUser, handleLogout, ...props}) => {
+    console.log(categories)
     return (
         <aside id='mobileSidebar' onClick={handleMobileSidebarClose}>
             <section className='mobile__sidebar'>
@@ -16,7 +18,7 @@ const MobileSidebar = ({handleUserHeaderMenuClose, handleMobileSidebarClose, inf
                             >
                                 <i className='icofont-automation'></i>
                             </Link>
-                            <img className='sidebar__user--photo' src={infoUser.photo ?? avatar} alt='' />
+                            <img className='sidebar__user--photo' src={infoUser.photo ? BASE_PATH + infoUser.photo : avatar} alt='' />
                             <div className='sidebar__user--info'>
                                 <p className='sidebar__user--infoName'>{infoUser.name}</p>
                                 <span className='sidebar__user--infoMail'>@{infoUser.email.split('@')[0]}</span>
@@ -64,31 +66,23 @@ const MobileSidebar = ({handleUserHeaderMenuClose, handleMobileSidebarClose, inf
                             <span className='item__link--name'>Trang chủ</span>
                         </NavLink>
                     </li>
-                    <li className='sidebar__menu--item'>
-                        <a className='item__link'>
-                            <i className='icofont-heart-beat-alt'></i>
-                            <span className='item__link--name'>Sức khỏe</span>
-                        </a>
-                    </li>
-                    <li className='sidebar__menu--item'>
-                        <a className='item__link'>
-                            <i className='icofont-industries-3'></i>
-                            <span className='item__link--name'>Công nghệ</span>
-                        </a>
-                    </li>
-                    <li className='sidebar__menu--item'>
-                        <a className='item__link'>
-                            <i className='icofont-court-hammer'></i>
-                            <span className='item__link--name'>Pháp luật</span>
-                        </a>
-                    </li>
+                    {categories.childrens && categories.childrens.map(c => c.category.parent_id === 0 ? (
+                        <li className='sidebar__menu--item' key={c.category.id}>
+                            <NavLink to={`/search/${c.category.slug}/""`} className={navData => navData.isActive ? 'item__link active' : 'item__link'}>
+                                {c.category.slug === 'suc-khoe' ? (<i className='icofont-heart-beat-alt'></i>) : ''} 
+                                {c.category.slug === 'cong-nghe' ? (<i className='icofont-industries-3'></i>) : ''} 
+                                {c.category.slug === 'phap-luat' ? (<i className='icofont-court-hammer'></i>) : ''} 
+                                <span className='sidebar__item--label'>{c.category.name}</span>
+                            </NavLink>
+                        </li>
+                    ) : '')}
                 </ul>
                 {
                     infoUser && (
                         <Fragment>
                             <ul className='sidebar__menu'>
                                 <li className='sidebar__menu--item'>
-                                    <a className='item__link'>
+                                    <a className='item__link' title='Tính năng này chưa phát triển'>
                                         <i className='icofont-home'></i>
                                         <span className='item__link--name'>Bài viết đã lưu</span>
                                     </a>

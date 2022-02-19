@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 import avatar from '../../images/bg/avatar-default.png'
 import camera from '../../images/bg/camera-edit.png'
-import { RESET_PASSWORD_URI, UPDATE_INFO_USER_URI } from '../config/api'
+import { BASE_PATH, RESET_PASSWORD_URI, UPDATE_INFO_USER_URI } from '../config/api'
 import TokenAxios from '../config/TokenAxios'
 import { getChildren, previewImage } from '../helpers/helpers'
 
@@ -176,7 +176,7 @@ const Setting = ({userInfo, appCallback}) => {
                             {
                                 inputAvatarAnchorEl && (<img className='form__file--overlay' src={camera} alt='' />)
                             }
-                            <img className='form__file--img' alt='' src={userInfo.photo ?? avatar} />
+                            <img className='form__file--img' alt='' src={userInfo.photo ? BASE_PATH + userInfo.photo : avatar} />
                         </div>
                         <div className='form__btn'>
                             {

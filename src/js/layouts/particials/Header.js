@@ -9,7 +9,6 @@ import MobileSidebar from './MobileSidebar'
 import { getParent } from '../../helpers/helpers'
 import BoxNotify from './BoxNotify'
 import { BASE_PATH, LOGOUT_API_URI } from '../../config/api'
-import { getValue } from '@testing-library/user-event/dist/utils'
 
 const UserHeadElem = (props) => {
     return (
@@ -76,6 +75,7 @@ const UserHeadMenuElem = (props) => {
 }
 
 const Header = ({
+    categories,
     logo, 
     appCallback, 
     userInfo
@@ -209,6 +209,7 @@ const Header = ({
              }
              {
                 mobileSidebarAnchorEl && width < 64 * 16 && (<MobileSidebar 
+                                                                categories={categories}
                                                                 handleUserHeaderMenuClose={handleUserHeaderMenuClose} 
                                                                 handleLogout={handleLogout} 
                                                                 infoUser={infoUser} 

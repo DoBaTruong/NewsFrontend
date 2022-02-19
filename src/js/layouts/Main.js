@@ -62,7 +62,7 @@ const Main = ({token, isAdmin, logo, appCallback, userInfo, ...props}) => {
 
     return (
         <Fragment>
-            <Header userInfo={userInfo} token={token} appCallback={appCallback} logo={logo} />
+            <Header categories={categories} userInfo={userInfo} token={token} appCallback={appCallback} logo={logo} />
             <WrapperEl customStyle={mainStyle} refs={mainRef} id='wrapper'>
                 { 
                     width >= 64*16 && (<Sidebar childCategories={childCategories} categories={categories} isAdmin={isAdmin} token={token} />)
@@ -76,7 +76,7 @@ const Main = ({token, isAdmin, logo, appCallback, userInfo, ...props}) => {
                     <Route path='/admin/news/post' element={<CreateNews isAdmin={isAdmin} appCallback={appCallback} />} />
                     <Route path='/admin/news/list' element={<News isAdmin={isAdmin} appCallback={appCallback} />} />
                     <Route path='/admin/news/update/:slug' element={<UpdateNews isAdmin={isAdmin} appCallback={appCallback} />} />
-                    <Route path='/news/:slug' element={<Details isAdmin={isAdmin} appCallback={appCallback} />} />
+                    <Route path='/news/:slug' element={<Details userInfo={userInfo} isAdmin={isAdmin} appCallback={appCallback} />} />
                 </Routes>
             </WrapperEl>
             <Footer appCallback={appCallback} logo={logo} />
