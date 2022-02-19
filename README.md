@@ -1,3 +1,7 @@
+# Account Admin User:
+Email: dobatruongbk48@gmail.com
+Password: 123456
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
