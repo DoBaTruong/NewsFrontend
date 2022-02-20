@@ -12,6 +12,7 @@ const HomeSlider = ({banners}) => {
     const [items, setItems] = useState(3)
 
     useEffect(() => {
+        console.log(banners)
         if(document.getElementById('sidebar')) {
             setWidthSlider(width - getStyles(document.getElementById('sidebar'), 'width'))
         }

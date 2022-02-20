@@ -1,6 +1,6 @@
 import { Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import {decodeHtml} from '../../helpers/helpers.js'
 
 const Sidebar = ({token, isAdmin, categories, childCategories}) => {
@@ -129,12 +129,6 @@ const Sidebar = ({token, isAdmin, categories, childCategories}) => {
                         <i className='icofont-pen-holder'></i>
                         <span className='submenu__item--linkLabel'>Đăng bài</span>
                     </NavLink>
-                </MenuItem>
-                <MenuItem className='submenu__item'>
-                    <a className='submenu__item--link'>
-                        <i className='icofont-file-flv'></i>
-                        <span className='submenu__item--linkLabel'>Đăng video</span>
-                    </a>
                 </MenuItem>
                 <MenuItem className='submenu__item'>
                     <NavLink to='/admin/categories' onClick={handleAdminMenuClose} className={navData => 'submenu__item--link' + (navData.isActive ? ' active' : '')}>
